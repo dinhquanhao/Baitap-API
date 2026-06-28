@@ -10,7 +10,7 @@ books = [
         "author": "Nguyen Van A",
         "category": "programming",
         "year": 2020,
-        "is_available": True
+        "is_available": True    
     },
     {
         "id": 2,
@@ -53,6 +53,10 @@ books = [
         "is_available": True
     }
 ]
+
+@app.get("/")
+def home():
+    return {"message": "Library API is running"}
 
 # API 1: Thống kê dữ liệu sách
 @app.get("/books/statistics")
@@ -98,3 +102,4 @@ def get_latest_book():
     )
 
     return latest_book
+
