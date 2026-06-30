@@ -13,3 +13,4 @@ def about():
 @app.get("/hello/{name}")
 def hello(name: str):
     return {"message": f"Xin chào {name}"}
+    
