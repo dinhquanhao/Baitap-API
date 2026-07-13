@@ -1,5 +1,7 @@
-
-
+"""
+Kết nối cơ sở dữ liệu MySQL bằng SQLAlchemy.
+Đọc thông tin kết nối từ biến môi trường, có giá trị mặc định để tiện dùng thử.
+"""
 import os
 
 from sqlalchemy import create_engine
@@ -21,6 +23,7 @@ Base = declarative_base()
 
 
 def get_db():
+    """Dependency cung cấp session DB cho mỗi request, tự đóng sau khi dùng xong."""
     db = SessionLocal()
     try:
         yield db

@@ -1,4 +1,4 @@
-
+"""Các hàm thao tác trực tiếp với database (Create, Read, Update, Delete)."""
 from sqlalchemy.orm import Session
 
 import models
@@ -14,6 +14,7 @@ def get_customer(db: Session, customer_id: int):
 
 
 def search_customers_by_type(db: Session, customer_type: str):
+    """Tìm gần đúng (không phân biệt hoa/thường) theo nhóm khách hàng."""
     return (
         db.query(models.Customer)
         .filter(models.Customer.customer_type.ilike(f"%{customer_type}%"))
@@ -41,4 +42,9 @@ def update_customer(db: Session, customer_id: int, customer: schemas.CustomerUpd
 
 
 def delete_customer(db: Session, customer_id: int):
-
+    db_customer = get_customer(db, customer_id)
+    if not db_customer:
+        return None
+    db.delete(db_customer)
+    db.commit()
+    return db_customer
