@@ -1,0 +1,4 @@
+Student 1---N Enrollment N---1 Course => Student và Course là quan hệ N-N thông qua Enrollment.
+ForeignKey đặt tại Enrollment: student_id -> students.id, course_id -> courses.id.
+back_populates giúp đồng bộ hai chiều: Student.enrollments<->Enrollment.student; Course.enrollments<->Enrollment.course.
+Student.courses và Course.students dùng secondary="enrollments".
