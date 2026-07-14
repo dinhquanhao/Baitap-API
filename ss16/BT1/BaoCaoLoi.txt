@@ -1,0 +1,5 @@
+# BAO CAO LOI
+
+1. 1-N: Department.students dùng back_populates="department_id" sai, sửa thành "department".
+2. 1-1: Student.profile thiếu uselist=False và Profile.student_id thiếu unique=True.
+3. N-N: Student.courses và Course.students thiếu secondary=student_course.
